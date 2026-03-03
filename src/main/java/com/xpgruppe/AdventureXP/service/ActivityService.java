@@ -21,5 +21,25 @@ public class ActivityService {
 		return activity;
 	}
 
+	public Activity createActivity(Activity activity) {
+		return activityRepository.save(activity);
+	}
+
+	public Activity updateActivity(Long id, Activity updatedActivity) {
+
+		Activity existingActivity = activityRepository.findById(id).orElseThrow(() -> new RuntimeException("Activity not found with id: " + id));
+
+		existingActivity.setTitle(updatedActivity.getTitle());
+		existingActivity.setDescription(updatedActivity.getDescription());
+		existingActivity.setStartDate(updatedActivity.getStartDate());
+		existingActivity.setEndDate(updatedActivity.getEndDate());
+		return activityRepository.save(existingActivity);
+	}
+
+	public void deleteActivity(Long id) {
+		Activity existingActivity = activityRepository.findById(id).orElseThrow(() -> new RuntimeException("Activity not found with id: " + id));
+		activityRepository.delete(existingActivity);
+	}
+
 
 }
