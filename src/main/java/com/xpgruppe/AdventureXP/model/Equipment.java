@@ -1,5 +1,9 @@
 package com.xpgruppe.AdventureXP.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+
 @Entity
 @Table(name = "equipment")
 @NoArgsConstructor

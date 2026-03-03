@@ -1,5 +1,11 @@
 package com.xpgruppe.AdventureXP.service;
 
+import org.springframework.stereotype.Service;
+import com.xpgruppe.AdventureXP.model.Equipment;
+import com.xpgruppe.AdventureXP.repository.EquipmentRepository;
+
+
+@Service
 public class EquipmentService {
 
     private final EquipmentRepository equipmentRepository;
