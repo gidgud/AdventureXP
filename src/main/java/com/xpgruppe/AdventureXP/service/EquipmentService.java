@@ -13,7 +13,7 @@ public class EquipmentService {
         this.equipmentRepository = equipmentRepository;
     }
 
-    public Equipment getEquipment(Long id) {
+    public Equipment getEquipmentById(Long id) {
         Equipment equipment = equipmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Equipment not found with id: " + id));
         return equipment;
     }  

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Aktiviteter</title>
+    <link rel="stylesheet" th:href="@{/css/catalogue.css}">
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<!--ACTIVITIES WRAPPER-->
+<div class="index_activities">
+
+    <!--ACTIVITIES LOOP-->
+    <div class="index_activities_loop" th:each="activity : ${activities}">
+
+        <div class="activity">
+
+            <h1 th:text="${activity.title}">Aktivitetsnavn</h1>
+
+            <img th:src="@{/images/Sumo.jpg}" alt="Aktivitet billede"/>
+
+            <div class="buttons">
+                <button type="button" class="see_more_btn">Se mere</button>
+                <button type="button" class="edit_btn">Rediger</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!--ADD NEW ACTIVITY-->
+    <div class="add_new_activity">
+        <h1>Ny aktivitet</h1>
+
+        <div>
+            <img th:src="@{/images/add_circle.svg}" alt="Tilføj aktivitet">
+        </div>
+
+        <div>
+            <button type="button" id="add_activity_btn">Tilføj</button>
+        </div>
+    </div>
+
+</div>
+
+
+    <!--LOGO-->
+    <span>
+        <img th:src="@{/images/Adventure_Alley_logo.png}"/>
+    </span>
+
+</body>
+</html>

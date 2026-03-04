@@ -1,5 +1,8 @@
 package com.xpgruppe.AdventureXP.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.xpgruppe.AdventureXP.model.Activity;
@@ -39,6 +42,12 @@ public class ActivityService {
 	public void deleteActivity(Long id) {
 		Activity existingActivity = activityRepository.findById(id).orElseThrow(() -> new RuntimeException("Activity not found with id: " + id));
 		activityRepository.delete(existingActivity);
+	}
+
+	public List<Activity> getAllActivitys() {
+		List<Activity> activitys = new ArrayList<>();
+		activitys = activityRepository.findAll();
+		return activitys;
 	}
 
 

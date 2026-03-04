@@ -1,0 +1,28 @@
+
+body {
+    background-image: url("../images/background_index.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.index_activities_loop {
+    padding: 5vw;
+    display: flex;
+    justify-content: center;
+}
+
+.activity {
+    background-color: white;
+    width: 20vw;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5vw;
+    margin: 10vw;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+.activity img {
+    width: 100%;
+}
+
+
