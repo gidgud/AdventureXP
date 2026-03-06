@@ -24,6 +24,10 @@ body {
     box-shadow: 0 4px 10px rgba(114, 113, 113, 0.73);
 }
 
+.activity {
+    padding-top: 5px;
+}
+
 .activity h1,
 .add_new_activity h1 {
     color: #4b4b4b;
