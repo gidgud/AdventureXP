@@ -1,9 +1,15 @@
 package com.xpgruppe.AdventureXP.model.DTO;
 
 import com.xpgruppe.AdventureXP.model.Equipment;
+import lombok.*;
 
 import java.util.ArrayList;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Builder
 public class CRUDActivityDTO {
 
     private Long id;

@@ -37,6 +37,8 @@ public class Activity {
 
 	private LocalDate endDate;
 
+	private String requirements;
+
 	@OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
 	private List<Equipment> equipmentList;
 }
