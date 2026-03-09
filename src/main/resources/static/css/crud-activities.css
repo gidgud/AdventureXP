@@ -1,0 +1,15 @@
+.activity-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
+[name="Activity-detail"],
+[name="Activity-requirements"]{
+    min-height: 75px;
+}
+
+[name="Activity-name"]{
+    margin-bottom: 10px;
+}

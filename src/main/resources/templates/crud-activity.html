@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>CRUD</title>
     <link rel="stylesheet" th:href="@{/css/style-activity-details.css}">
+    <link rel="stylesheet" th:href="@{/css/crud-activities.css}">
 </head>
 <body>
 <header th:replace="~{fragments/header :: header-element}"></header>
@@ -16,12 +17,12 @@
         </div>
         <div class="top-right">
             <div class="activity-info">
-                <h2>Paintball</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet odio lacus. Phasellus ligula eros, auctor ac lacus in, scelerisque pharetra neque. Fusce a urna sodales, tempus elit a, volutpat purus. nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <input type="text" name="Activity-name" placeholder="Indsæt aktivitets navn">
+                <textarea class="box" name="Activity-detail" placeholder="Indsæt aktivitets detaljer"></textarea>
             </div>
             <div class="activity-info">
                 <h2>Krav</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet odio lacus. Phasellus ligula eros, auctor ac lacus in, scelerisque pharetra neque. Fusce a urna sodales, tempus elit a, volutpat purus. nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <textarea class="box"  name="Activity-requirements" placeholder="Indsæt kravs detaljer"></textarea>
             </div>
         </div>
     </div>
@@ -31,41 +32,37 @@
         <div class="bottom-left">
             <div class="udstyr-header">
                 <h2>Udstyr</h2>
-                <button class="rediger-btn">Rediger</button>
+                <button class="rediger-btn">Gem</button>
             </div>
+
+            <form>
+                <select name="equipmentID" id="equipment">
+                    <option value="" disabled selected>Vælg udstyr</option>
+
+                    <th:block th:each="equipment : ${equipments} ">
+                        <option th:value="${equipment.id}" th:text="${equipment.name}"></option>
+                    </th:block>
+                </select>
+
+                <th:block th:each="id : ${selectedEquipment}">
+                    <input type="hidden" name="selectedEquipment" th:value="${id}">
+                </th:block>
+
+                <button type="submit">Tilføj</button>
+            </form>
+
             <ul>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Lorem ipsum dolor sit amet</li>
+                <li th:each="id : ${selectedEquipment}">
+                    <span th:text="${equipment.name}"></span>
+                </li>
             </ul>
+
+
         </div>
         <div class="bottom-right">
             <table>
-                <tr>
-                    <th>Udstyr</th>
-                    <th>Antal</th>
-                    <th>Status</th>
-                </tr>
-                <tr>
-                    <td>Paintball Gun</td>
-                    <td>20stk</td>
-                    <td>Ledig</td>
-                </tr>
-                <tr>
-                    <td>Hjelme</td>
-                    <td>20stk</td>
-                    <td>Ledig</td>
-                </tr>
-                <tr>
-                    <td>Veste</td>
-                    <td>20stk</td>
-                    <td>Booked</td>
-                </tr>
-                <tr>
-                    <td>Test</td>
-                    <td>15stk</td>
-                    <td>Reparation</td>
-                </tr>
+
+
             </table>
         </div>
     </div>
