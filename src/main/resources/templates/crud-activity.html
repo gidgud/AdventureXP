@@ -13,17 +13,22 @@
     <!-- Top section -->
     <div class="top-section">
         <div class="top-left">
-            <img th:src="@{/img/win.png}" alt="winning" style="width: 100px; height: 125px;" />
+            <img th:src="@{/img/win.png}" alt="winning" style="width: 100px; height: 125px;"/>
         </div>
         <div class="top-right">
-            <div class="activity-info">
-                <input type="text" name="Activity-name" placeholder="Indsæt aktivitets navn">
-                <textarea class="box" name="Activity-detail" placeholder="Indsæt aktivitets detaljer"></textarea>
-            </div>
-            <div class="activity-info">
-                <h2>Krav</h2>
-                <textarea class="box"  name="Activity-requirements" placeholder="Indsæt kravs detaljer"></textarea>
-            </div>
+            <form th:action="@{/activity/create}" th:object="${activity}" method="post">
+                <div class="activity-info">
+                    <input type="text" name="Activity-name" placeholder="Indsæt aktivitets navn"
+                           th:field="*{activityName}">
+                    <textarea class="box" name="Activity-detail" placeholder="Indsæt aktivitets detaljer"
+                              th:field="*{activityDetail}"></textarea>
+                </div>
+                <div class="activity-info">
+                    <h2>Krav</h2>
+                    <textarea class="box" name="Activity-requirements" placeholder="Indsæt kravs detaljer"
+                              th:field="*{activityRequimentDetail}"></textarea>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -35,13 +40,15 @@
                 <button class="rediger-btn">Gem</button>
             </div>
 
-            <form>
-                <select name="equipmentID" id="equipment">
+            <form th:action="@{/activity/create}" th:object="${activity}" method="post">
+                <select th:field="*{equipmentList}">
                     <option value="" disabled selected>Vælg udstyr</option>
 
-                    <th:block th:each="equipment : ${equipments} ">
-                        <option th:value="${equipment.id}" th:text="${equipment.name}"></option>
-                    </th:block>
+                    <option th:each="eq : ${equipments}"
+                            th:value="${equipments.id}"
+                            th:text="${equipment.name}">
+                    </option>
+
                 </select>
 
                 <th:block th:each="id : ${selectedEquipment}">

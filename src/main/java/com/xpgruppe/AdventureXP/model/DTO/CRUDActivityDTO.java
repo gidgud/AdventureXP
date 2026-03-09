@@ -4,6 +4,7 @@ import com.xpgruppe.AdventureXP.model.Equipment;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,7 +17,7 @@ public class CRUDActivityDTO {
     private String activityName;
     private String activityDetail;
     private String activityRequimentDetail;
-    private ArrayList<Equipment> equipments;
+    private List<Equipment> equipmentList;
 
 
 }

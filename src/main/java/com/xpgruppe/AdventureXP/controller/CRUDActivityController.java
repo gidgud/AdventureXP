@@ -27,7 +27,7 @@ public class CRUDActivityController {
     @GetMapping("/activity/create")
     public String createActivity(Model model){
         model.addAttribute("activity", new CRUDActivityDTO());
-        model.addAttribute("equipment", equipmentService.getAll());
+        model.addAttribute("equipments", equipmentService.getAll());
 
         return "crud-activity";
     }

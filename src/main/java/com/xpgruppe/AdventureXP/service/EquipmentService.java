@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import com.xpgruppe.AdventureXP.model.Equipment;
 import com.xpgruppe.AdventureXP.repository.EquipmentRepository;
 
+import java.util.List;
+
 
 @Service
 public class EquipmentService {
@@ -33,6 +35,10 @@ public class EquipmentService {
     public void deleteEquipment(Long id) {
         Equipment existingEquipment = equipmentRepository.findById(id).orElseThrow(() -> new RuntimeException("Equipment not found with id: " + id));
         equipmentRepository.delete(existingEquipment);
+    }
+
+    public List<Equipment> getAll(){
+        return equipmentRepository.findAll();
     }
 
 }
