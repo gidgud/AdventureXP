@@ -44,8 +44,8 @@
                 <select th:field="*{equipmentList}">
                     <option value="" disabled selected>Vælg udstyr</option>
 
-                    <option th:each="eq : ${equipments}"
-                            th:value="${equipments.id}"
+                    <option th:each="equipment : ${equipments}"
+                            th:value="${equipment.id}"
                             th:text="${equipment.name}">
                     </option>
 

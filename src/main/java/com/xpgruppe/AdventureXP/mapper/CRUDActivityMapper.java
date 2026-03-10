@@ -10,7 +10,7 @@ public class CRUDActivityMapper {
         activity.setTitle(dto.getActivityName());
         activity.setDescription(dto.getActivityDetail());
         activity.setRequirements(dto.getActivityRequimentDetail());
-        activity.setEquipmentList(dto.getEquipments());
+        activity.setEquipmentList(dto.getEquipmentList());
 
         return activity;
     }
