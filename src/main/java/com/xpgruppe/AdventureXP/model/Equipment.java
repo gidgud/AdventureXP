@@ -1,5 +1,7 @@
 package com.xpgruppe.AdventureXP.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,10 +21,12 @@ public class Equipment {
 
     private String name;
 
-    private String status;
-
     @ManyToOne
     @JoinColumn(name = "activity_id")
+    @JsonIgnore
     private Activity activity;
+
+	@Enumerated(EnumType.STRING)
+	private EquipmentStatus status;
 
 }
