@@ -33,6 +33,8 @@ public class Activity {
 
 	private String description;
 
+	private String requirements;
+
 	private LocalDate startDate;
 
 	private LocalDate endDate;

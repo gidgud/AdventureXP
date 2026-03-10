@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html lang="dk" xmlns:th="https://www.thymeleaf.org/">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Sumo Details</title>
-    <link rel="stylesheet" th:href="@{/css/style-activity-details.css}">
+	<meta charset="UTF-8">
+	<title>Aktivitet Detaljer</title>
+	<link rel="stylesheet" th:href="@{/css/style-activity-details.css}">
 </head>
+
 <body>
-    <header th:replace="~{fragments/header :: header-element}"></header>
+	<header th:replace="~{fragments/header :: header-element}"></header>
 
-    <div class="page-wrapper">
-        <!-- Top section -->
-        <div class="top-section">
-            <div class="top-left">
-                <img th:src="@{/img/win.png}" alt="winning" style="width: 100px; height: 125px;" />
-            </div>
-            <div class="top-right">
-                <div class="activity-info">
-                    <h2>Paintball</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet odio lacus. Phasellus ligula eros, auctor ac lacus in, scelerisque pharetra neque. Fusce a urna sodales, tempus elit a, volutpat purus. nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-                <div class="activity-info">
-                    <h2>Krav</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet odio lacus. Phasellus ligula eros, auctor ac lacus in, scelerisque pharetra neque. Fusce a urna sodales, tempus elit a, volutpat purus. nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-        </div>
+	<div class="page-wrapper">
+		<!-- Top section -->
+		<div class="top-section">
+			<div class="top-left">
+				<img th:src="@{/img/win.png}" alt="winning" style="width: 100px; height: 125px;" />
+			</div>
+			<div class="top-right">
+				<div class="activity-info">
+					<h2 th:text="${activity.title}">Aktivitetsnavn</h2>
+					<p th:text="${activity.description}">Ingen detaljer angivet</p>
+				</div>
+				<div class="activity-info">
+					<h2>Krav</h2>
+					<p th:text="${activity.requirements}">Ingen krav angivet</p>
+				</div>
+			</div>
+		</div>
 
-        <!-- Bottom section -->
-        <div class="bottom-section">
-            <div class="bottom-left">
-                <div class="udstyr-header">
-                    <h2>Udstyr</h2>
-                    <button class="rediger-btn">Rediger</button>
-                </div>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet</li>
-                    <li>Lorem ipsum dolor sit amet</li>
-                    <li>Lorem ipsum dolor sit amet</li>
-                </ul>
-            </div>
-            <div class="bottom-right">
-                <table>
-                    <tr>
-                        <th>Udstyr</th>
-                        <th>Antal</th>
-                        <th>Status</th>
-                    </tr>
-                    <tr>
-                        <td>Paintball Gun</td>
-                        <td>20stk</td>
-                        <td>Ledig</td>
-                    </tr>
-                    <tr>
-                        <td>Hjelme</td>
-                        <td>20stk</td>
-                        <td>Ledig</td>
-                    </tr>
-                    <tr>
-                        <td>Veste</td>
-                        <td>20stk</td>
-                        <td>Booked</td>
-                    </tr>
-                    <tr>
-                        <td>Test</td>
-                        <td>15stk</td>
-                        <td>Reparation</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
+		<!-- Bottom section -->
+		<div class="bottom-section">
+			<div class="bottom-left">
+				<div class="udstyr-header">
+					<h2>Udstyr</h2>
+					<button class="rediger-btn">Rediger</button>
+				</div>
+				<ul>
+					<li>Lorem ipsum dolor sit amet</li>
+					<li>Lorem ipsum dolor sit amet</li>
+					<li>Lorem ipsum dolor sit amet</li>
+				</ul>
+			</div>
+			<div class="bottom-right">
+				<table>
+					<tr>
+						<th>Udstyr</th>
+						<th>Antal</th>
+						<th>Status</th>
+					</tr>
+					<tr>
+						<td>Paintball Gun</td>
+						<td>20stk</td>
+						<td>Ledig</td>
+					</tr>
+					<tr>
+						<td>Hjelme</td>
+						<td>20stk</td>
+						<td>Ledig</td>
+					</tr>
+					<tr>
+						<td>Veste</td>
+						<td>20stk</td>
+						<td>Booked</td>
+					</tr>
+					<tr>
+						<td>Test</td>
+						<td>15stk</td>
+						<td>Reparation</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>

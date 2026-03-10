@@ -45,35 +45,7 @@ public class ActivityService {
 	}
 
 	public List<Activity> getAllActivitys() {
-		List<Activity> activities = new ArrayList<>();
-
-		Activity a1 = new Activity();
-		a1.setTitle("Sumobrydning");
-		a1.setDescription("Sjov og kaotisk kamp i sumodragter.");
-
-		Activity a2 = new Activity();
-		a2.setTitle("Paintball");
-		a2.setDescription("Actionfyldt holdkamp med malingkugler.");
-
-		Activity a3 = new Activity();
-		a3.setTitle("Minigolf");
-		a3.setDescription("Hyggelig og konkurrencepræget minigolf.");
-
-		Activity a4 = new Activity();
-		a4.setTitle("Wipeout");
-		a4.setDescription("Forhindringsbane med fart, balance og grin.");
-
-		Activity a5 = new Activity();
-		a5.setTitle("Gokart");
-		a5.setDescription("Ræs mod vennerne på gokartbanen.");
-
-		activities.add(a1);
-		activities.add(a2);
-		activities.add(a3);
-		activities.add(a4);
-		activities.add(a5);
-
-		return activities;
+		return activityRepository.findAll();
 	}
 
 
