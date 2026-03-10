@@ -45,28 +45,28 @@
 				<table>
 					<tr>
 						<th>Udstyr</th>
-						<th>Antal</th>
 						<th>Status</th>
 					</tr>
-					<tr>
-						<td>Paintball Gun</td>
-						<td>20stk</td>
-						<td>Ledig</td>
-					</tr>
-					<tr>
-						<td>Hjelme</td>
-						<td>20stk</td>
-						<td>Ledig</td>
-					</tr>
-					<tr>
-						<td>Veste</td>
-						<td>20stk</td>
-						<td>Booked</td>
-					</tr>
-					<tr>
-						<td>Test</td>
-						<td>15stk</td>
-						<td>Reparation</td>
+					<tr th:each="equipment : ${activity.equipmentList}">
+						<td th:text="${equipment.name}">Udstyr navn</td>
+						<td>
+							<form th:action="@{/equipment/{id}/status(id=${equipment.id})}"
+								method="post">
+								<input type="hidden" name="activityId"
+									th:value="${activity.id}" />
+								<select name="status" onchange="this.form.submit()">
+									<option value="TILGÆNGELIG"
+										th:selected="${equipment.status == T(com.xpgruppe.AdventureXP.model.EquipmentStatus).TILGÆNGELIG}">
+										Tilgængelig</option>
+									<option value="I_BRUG"
+										th:selected="${equipment.status == T(com.xpgruppe.AdventureXP.model.EquipmentStatus).I_BRUG}">
+										I brug</option>
+									<option value="TIL_REPARATION"
+										th:selected="${equipment.status == T(com.xpgruppe.AdventureXP.model.EquipmentStatus).TIL_REPARATION}">
+										Til reparation</option>
+								</select>
+							</form>
+						</td>
 					</tr>
 				</table>
 			</div>
