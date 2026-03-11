@@ -41,4 +41,6 @@ public class EquipmentService {
         return equipmentRepository.findAll();
     }
 
+
+
 }

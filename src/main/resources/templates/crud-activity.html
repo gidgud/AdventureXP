@@ -40,8 +40,8 @@
                 <button class="rediger-btn">Gem</button>
             </div>
 
-            <form th:action="@{/activity/create}" th:object="${activity}" method="post">
-                <select th:field="*{equipmentList}">
+            <form th:action="@{/activity/add-equipment}" th:object="${activity}" method="post">
+                <select th:field="*{selectedEquipmentId}">
                     <option value="" disabled selected>Vælg udstyr</option>
 
                     <option th:each="equipment : ${equipments}"
@@ -51,7 +51,7 @@
 
                 </select>
 
-                <th:block th:each="id : ${selectedEquipment}">
+                <th:block th:each="id : ${equipments}">
                     <input type="hidden" name="selectedEquipment" th:value="${id}">
                 </th:block>
 
@@ -59,7 +59,7 @@
             </form>
 
             <ul>
-                <li th:each="id : ${selectedEquipment}">
+                <li th:each="equipment : ${activity.getEquipmentList}">
                     <span th:text="${equipment.name}"></span>
                 </li>
             </ul>
