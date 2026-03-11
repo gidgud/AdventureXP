@@ -17,8 +17,8 @@ public class CRUDActivityDTO {
     private String activityName;
     private String activityDetail;
     private String activityRequimentDetail;
-    private List<Equipment> equipmentList;
-    private List<Long> selectedEquipmentId;
+    private final List<Equipment> equipmentList = new ArrayList<>();
+    private  Long selectedEquipmentId; 
 
 
 
