@@ -29,7 +29,6 @@ public class ActivityDetailsController {
 
 	}
 
-
 	@PostMapping("/equipment/{id}/status")
 	public String updateStatus(@PathVariable Long id, @RequestParam String status, @RequestParam(required = false) Long activityId, RedirectAttributes redirectAttributes) {
 		equipmentService.updateStatus(id, status);

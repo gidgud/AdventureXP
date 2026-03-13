@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Booking</title>
+</head>
+<body>
+
+<h1>Create Booking</h1>
+
+<form th:action="@{/bookings/create}" th:object="${booking}" method="post">
+
+    <div>
+        <label for="customerName">Customer name</label>
+        <input type="text" id="customerName" th:field="*{customerName}" required>
+    </div>
+
+    <div>
+        <label for="customerEmail">Customer email</label>
+        <input type="email" id="customerEmail" th:field="*{customerEmail}" required>
+    </div>
+
+    <div>
+        <label for="bookingDate">Booking date</label>
+        <input type="date" id="bookingDate" th:field="*{bookingDate}" required>
+    </div>
+
+    <div>
+        <label for="startTime">Start time</label>
+        <input type="time" id="startTime" th:field="*{startTime}" required>
+    </div>
+
+    <div>
+        <label for="endTime">End time</label>
+        <input type="time" id="endTime" th:field="*{endTime}" required>
+    </div>
+
+    <div>
+        <label for="numberOfPeople">Number of people</label>
+        <input type="number" id="numberOfPeople" th:field="*{numberOfPeople}" required>
+    </div>
+
+    <div>
+        <label for="activity">Activity</label>
+        <select id="activity" name="activityId" required>
+            <option value="">Choose activity</option>
+            <option th:each="activity : ${activities}"
+                    th:value="${activity.id}"
+                    th:text="${activity.title}">
+            </option>
+        </select>
+    </div>
+
+    <button type="submit">Create booking</button>
+</form>
+
+<br>
+<a th:href="@{/bookings}">See all bookings</a>
+
+</body>
+</html>

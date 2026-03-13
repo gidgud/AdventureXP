@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookings</title>
+</head>
+<body>
+
+<h1>All Bookings</h1>
+
+<a th:href="@{/bookings/create}">Create new booking</a>
+
+<br><br>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Customer name</th>
+        <th>Customer email</th>
+        <th>Booking date</th>
+        <th>Start time</th>
+        <th>End time</th>
+        <th>Number of people</th>
+        <th>Activity</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="booking : ${bookings}">
+        <td th:text="${booking.id}"></td>
+        <td th:text="${booking.customerName}"></td>
+        <td th:text="${booking.customerEmail}"></td>
+        <td th:text="${booking.bookingDate}"></td>
+        <td th:text="${booking.startTime}"></td>
+        <td th:text="${booking.endTime}"></td>
+        <td th:text="${booking.numberOfPeople}"></td>
+        <td th:text="${booking.activity.title}"></td>
+        <td>
+            <a th:href="@{/bookings/delete/{id}(id=${booking.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
