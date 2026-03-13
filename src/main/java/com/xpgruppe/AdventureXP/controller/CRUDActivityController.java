@@ -2,7 +2,9 @@ package com.xpgruppe.AdventureXP.controller;
 
 import com.xpgruppe.AdventureXP.mapper.CRUDActivityMapper;
 import com.xpgruppe.AdventureXP.model.DTO.CRUDActivityDTO;
+import com.xpgruppe.AdventureXP.model.Activity;
 import com.xpgruppe.AdventureXP.model.Equipment;
+import com.xpgruppe.AdventureXP.repository.ActivityRepository;
 import com.xpgruppe.AdventureXP.repository.EquipmentRepository;
 import com.xpgruppe.AdventureXP.service.ActivityService;
 import com.xpgruppe.AdventureXP.service.EquipmentService;
@@ -23,15 +25,17 @@ import java.util.List;
 
 public class CRUDActivityController {
 
+    private final ActivityRepository activityRepository;
     private final EquipmentService equipmentService;
     private final ActivityService activityService;
     private final EquipmentRepository equipmentRepository;
 
     public CRUDActivityController(EquipmentService equipmentService, ActivityService activityService,
-            EquipmentRepository equipmentRepository) {
+            EquipmentRepository equipmentRepository, ActivityRepository activityRepository) {
         this.equipmentService = equipmentService;
         this.activityService = activityService;
         this.equipmentRepository = equipmentRepository;
+        this.activityRepository = activityRepository;
     }
 
     @ModelAttribute("activity")
@@ -46,9 +50,32 @@ public class CRUDActivityController {
     }
 
     @PostMapping("/activity/create")
-    public String submitDetails(@ModelAttribute("activity") CRUDActivityDTO dto) {
-        activityService.createActivity(CRUDActivityMapper.toEntity(dto));
-        return "redirect:/activity";
+    public String submitDetails(@ModelAttribute("activity") CRUDActivityDTO dto, String action) {
+
+        if(action.equals("save")) {
+            
+        Activity activity = Activity.builder()
+                .title(dto.getActivityName())
+                .description(dto.getActivityDetail())
+                .requirements(dto.getActivityRequimentDetail())
+                .build();
+                
+        activityService.createActivity(activity);
+
+
+
+        activityRepository.save(activity);
+       
+    
+
+        }
+
+        
+        
+
+        
+
+        return "redirect:/activity/create";
     }
 
     @PostMapping("/activity/add-equipment")
@@ -63,6 +90,9 @@ public class CRUDActivityController {
             dto.getEquipmentList().add(eq);
         }
 
+        System.out.println(dto.getActivityName());
+        
+        model.addAttribute("activity", dto);
         model.addAttribute("equipments", equipmentService.getAll());
         return "crud-activity";
     }

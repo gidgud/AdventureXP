@@ -19,10 +19,11 @@
             style="width: 100px; height: 125px"
           />
         </div>
+
         <div class="top-right">
           <form
             class="form-design"
-            th:action="@{/activity/create}"
+            th:action="@{/CRUD/activity/create}"
             th:object="${activity}"
             method="post"
           >
@@ -30,17 +31,18 @@
               <input
                 id="activityName"
                 type="text"
-                name="Activity-name"
+                
                 placeholder="Indsæt aktivitets navn"
                 th:field="*{activityName}"
               />
               <textarea
                 class="box"
-                name="Activity-detail"
+            
                 placeholder="Indsæt aktivitets detaljer"
                 th:field="*{activityDetail}"
               ></textarea>
             </div>
+
             <div class="activity-info">
               <h2>Krav</h2>
               <textarea
@@ -50,6 +52,8 @@
                 th:field="*{activityRequimentDetail}"
               ></textarea>
             </div>
+
+            <button class="rediger-btn" name="action" value="save" type="submit">Gem</button>
           </form>
         </div>
       </div>
@@ -59,17 +63,19 @@
         <div class="bottom-left">
           <div class="udstyr-header">
             <h2>Udstyr</h2>
-            <button class="rediger-btn">Gem</button>
           </div>
 
           <form
-            th:action="@{'/CRUD/activity/add-equipment'}"
+            th:action="@{/CRUD/activity/add-equipment}"
             th:object="${activity}"
             method="post"
           >
+            <input type="hidden" th:field="*{activityName}" />
+            <input type="hidden" th:field="*{activityDetail}" />
+            <input type="hidden" th:field="*{activityRequimentDetail}" />
+
             <select th:field="*{selectedEquipmentId}">
               <option value="" disabled selected>Vælg udstyr</option>
-
               <option
                 th:each="equipment : ${equipments}"
                 th:value="${equipment.id}"
@@ -86,10 +92,12 @@
             </li>
           </ul>
         </div>
+
         <div class="bottom-right">
           <table></table>
         </div>
       </div>
     </div>
+    
   </body>
 </html>
